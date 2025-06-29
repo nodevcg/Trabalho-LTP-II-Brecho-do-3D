@@ -1,0 +1,56 @@
+﻿:root {
+    --corprincipal: #10B981;
+}
+
+.btn-azul {
+    background-color: var(--corprincipal);
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+    margin-left: 10px; 
+}
+
+.btn-azul:hover {
+    background-color: #317ea6; 
+}
+
+
+.gridview {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 40px;
+}
+
+.gridview th,
+.gridview td {
+    border: 1px solid var(--corprincipal);
+    padding: 10px;
+    text-align: left;
+}
+
+.gridview th {
+    background-color: var(--corprincipal);
+    color: white;
+}
+
+.gridview tr:nth-child(even) {
+    background-color: #f2f9fc;
+}
+
+.gridview tr:hover {
+    background-color: #d1ecf7;
+}
+
+.gridview .selected {
+    background-color: var(--corprincipal);
+    color: white;
+    font-weight: bold;
+}
+
+.Link {
+    text-decoration: none;
+}
