@@ -13,13 +13,14 @@ CREATE TABLE CategoriasItem (
 );
 
 CREATE TABLE Itens (
-    IDItem INT  PRIMARY KEY,
+    IDItem INT IDENTITY(1,1) PRIMARY KEY,
     NomeItem VARCHAR(100),
     Descricao VARCHAR(255),
     EstadoConservacao VARCHAR(50),
     IDCategoria INT,
     DataCadastro DATETIME,
     FotoItem VARCHAR(255),
+    Preco DECIMAL(10,2),
     FOREIGN KEY (IDCategoria) REFERENCES CategoriasItem(IDCategoria)
 );
 
