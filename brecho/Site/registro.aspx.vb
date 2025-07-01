@@ -8,7 +8,6 @@ Partial Class registro
         Dim verifica As New SqlCommand("SELECT COUNT(*) FROM Usuarios WHERE NomeLogin = @NomeLogin", conexao)
         verifica.Parameters.AddWithValue("@NomeLogin", txtNomeLogin.Text)
 
-        ' Preenche parâmetros para inserção
         SqlDataSource1.InsertParameters("NomeLogin").DefaultValue = txtNomeLogin.Text
         SqlDataSource1.InsertParameters("Senha").DefaultValue = txtSenha.Text
         SqlDataSource1.InsertParameters("Perfil").DefaultValue = txtPerfil.Text
