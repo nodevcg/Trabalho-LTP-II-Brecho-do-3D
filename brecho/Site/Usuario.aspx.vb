@@ -6,7 +6,6 @@ Partial Class Usuario
     Private connectionString As String = ConfigurationManager.ConnectionStrings("trabalho_ltp_raluca").ConnectionString
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        ' Verificar se o usuário está logado
         If Session("usuarioLogado") Is Nothing Then
             Response.Redirect("Login.aspx")
             Return
@@ -25,7 +24,6 @@ Partial Class Usuario
             lblNomeUsuario.Text = nomeUsuario
             txtUsuarioAtual.Text = nomeUsuario
 
-            ' Gerar iniciais para o avatar
             Dim iniciais As String = ""
             Dim palavras() As String = nomeUsuario.Split(" "c)
             For Each palavra As String In palavras
@@ -37,7 +35,6 @@ Partial Class Usuario
             If iniciais.Length = 0 Then iniciais = nomeUsuario.Substring(0, 1).ToUpper()
             lblIniciais.Text = iniciais
 
-            ' Definir data de cadastro (simulada - pode ser obtida do banco se existir)
             lblDataCadastro.Text = "Julho 2025"
 
         Catch ex As Exception
@@ -69,7 +66,6 @@ Partial Class Usuario
             Dim idUsuario As Integer = ObterIDUsuario()
 
             If idUsuario = 0 Then
-                ' Usar valores padrão se não conseguir obter o ID do usuário
                 lblTotalCompras.Text = "0"
                 lblTotalVendas.Text = "0"
                 lblEventosParticipados.Text = "0"
@@ -79,24 +75,20 @@ Partial Class Usuario
             Using conn As New SqlConnection(connectionString)
                 conn.Open()
 
-                ' Total de compras (transações onde o usuário é receptor)
                 Dim cmdCompras As New SqlCommand("SELECT COUNT(*) FROM Transacoes WHERE IDAlunoReceptor = @userId AND TipoTransacao = 'Compra'", conn)
                 cmdCompras.Parameters.AddWithValue("@userId", idUsuario)
                 lblTotalCompras.Text = cmdCompras.ExecuteScalar().ToString()
 
-                ' Total de vendas/doações (transações onde o usuário é doador)
                 Dim cmdVendas As New SqlCommand("SELECT COUNT(*) FROM Transacoes WHERE IDAlunoDoador = @userId", conn)
                 cmdVendas.Parameters.AddWithValue("@userId", idUsuario)
                 lblTotalVendas.Text = cmdVendas.ExecuteScalar().ToString()
 
-                ' Total de eventos participados (convites aceitos)
                 Dim cmdEventos As New SqlCommand("SELECT COUNT(*) FROM ConvitesEvento WHERE IDAlunoConvidado = @userId AND StatusConvite = 'Aceito'", conn)
                 cmdEventos.Parameters.AddWithValue("@userId", idUsuario)
                 lblEventosParticipados.Text = cmdEventos.ExecuteScalar().ToString()
 
             End Using
         Catch ex As Exception
-            ' Usar valores padrão em caso de erro
             lblTotalCompras.Text = "0"
             lblTotalVendas.Text = "0"
             lblEventosParticipados.Text = "0"
@@ -108,7 +100,6 @@ Partial Class Usuario
             Dim idUsuario As Integer = ObterIDUsuario()
 
             If idUsuario = 0 Then
-                ' Se não conseguir obter o ID do usuário, não carrega o histórico
                 Return
             End If
 
@@ -140,7 +131,6 @@ Partial Class Usuario
             Dim novaSenha As String = txtNovaSenha.Text.Trim()
             Dim confirmarSenha As String = txtConfirmarSenha.Text.Trim()
 
-            ' Validações
             If String.IsNullOrEmpty(senhaAtual) Then
                 ExibirMensagem("Digite a senha atual.", False)
                 Return
