@@ -257,7 +257,6 @@
                 <asp:Button ID="btnVoltar" runat="server" Text="← Voltar à Loja" CssClass="btn-back" OnClick="btnVoltar_Click" />
             </div>
             
-            <!-- Seção de Perfil -->
             <div class="profile-section">
                 <div class="profile-header">
                     <div class="profile-avatar">
@@ -269,7 +268,6 @@
                     </div>
                 </div>
                 
-                <!-- Estatísticas do Usuário -->
                 <div class="section-title">
                     <span class="material-icons">analytics</span>
                     Suas Estatísticas
@@ -290,7 +288,6 @@
                 </div>
             </div>
             
-            <!-- Seção de Edição de Perfil -->
             <div class="profile-section">
                 <div class="section-title">
                     <span class="material-icons">edit</span>
@@ -330,7 +327,6 @@
                 </div>
             </div>
             
-            <!-- Seção de Histórico -->
             <div class="profile-section">
                 <div class="section-title">
                     <span class="material-icons">history</span>
