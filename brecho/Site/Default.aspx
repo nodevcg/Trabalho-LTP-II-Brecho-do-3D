@@ -475,7 +475,6 @@
             </section>
         </main>
 
-        <!-- Modal do Carrinho -->
         <div id="cartModal" class="modal">
             <div class="modal-content">
                 <span class="close" onclick="closeCartModal()">&times;</span>
